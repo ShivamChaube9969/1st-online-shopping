@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%-5level %msg %d{HH:mm:ss.SSS} %logger{36} %n</Pattern>  <!-- 5 is the number of characters and "-" is for left justification %logger 
+				shows from where the message is coming %msg is the actual message, level 
+				there different levels like debug, trace, info, warn, error -->
+		</encoder>
+	</appender>
+
+	<logger name="net.skc" level="DEBUG" additivity = "false">
+		<appender-ref ref="consoleAppender" />
+	</logger>
+	<root level="INFO">
+		<appender-ref ref="consoleAppender" />
+	</root>
+
+</configuration>
