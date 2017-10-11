@@ -27,6 +27,13 @@ public class JsonDataController {
 		return productDAO.listActiveProducts();
 	}
 	
+	@RequestMapping("/admin/all/products")
+	@ResponseBody							// by adding this we will return data in json format
+	public List<Product> getAllProductsForAdmin(){
+		
+		return productDAO.list();
+	}
+	
 	@RequestMapping("/category/{id}/products")
 	@ResponseBody							// by adding this we will return data in json format
 	public List<Product> getProductsByCategory(@PathVariable int id){
