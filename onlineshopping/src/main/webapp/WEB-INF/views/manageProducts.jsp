@@ -116,8 +116,15 @@
 								<sf:select class="form-control" id="categoryId"
 									path="categoryId" items="${categories}" itemLabel="name"
 									itemValue="id" />
+								<c:if test="${product.id == 0}">
+									<div class="text-right">
 
-
+										<br />
+										<button type="button" data-toggle="modal"
+											data-target="#myCategoryModal" class="btn btn-warning btn-xs">Add
+											Category</button>
+									</div>
+								</c:if>
 							</div>
 
 						</div>
@@ -148,12 +155,10 @@
 
 	</div>
 
-
-
 	<div class="row">
 		<div class="col-xs-12">
-		<h3>Available Products!</h3>
-		<hr/>
+			<h3>Available Products!</h3>
+			<hr />
 		</div>
 		<div class="col-xs-12">
 			<div style="overflow: auto">
@@ -174,7 +179,7 @@
 							<th>Edit</th>
 						</tr>
 					</thead>
-					
+
 					<tfoot>
 						<tr>
 							<th>Id</th>
@@ -191,4 +196,68 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="myCategoryModal" role="dialog"
+		tabindex="-1">
+
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal">
+
+						<span>&times;</span>
+
+					</button>
+
+					<h4 class="modal-title">Add New Category</h4>
+
+				</div>
+
+				<div class="modal-body">
+
+					<!--  Category form -->
+					<sf:form id="categoryForm" modelAttribute="category"
+						action="${contextRoot}/manage/category" method="POST"
+						class="form-horizontal">
+
+						<div class="form-group">
+							<label for="category_name" class="control-label col-md-4">Category
+								Name</label>
+							<div class="col-md-8">
+								<sf:input type="text" path="name" id="category_name"
+									class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="category_description" class="control-label col-md-4">Category
+								Description</label>
+							<div class="col-md-8">
+								<sf:textarea cols="" rows="5" path="description"
+									id="category_description" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+
+							<div class="col-md-offset-4 col-md-8">
+								<input type="submit" value="Add Category" class="btn btn-primary" />
+							</div>
+						</div>
+
+					</sf:form>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
 </div>

@@ -113,8 +113,6 @@ $(function() {
 
 	// ---------------------------------------------------------------------------------------------------------------------------
 
-	
-
 	// ------------------------------------------
 	// ------------data table for admin----------
 	// ------------------------------------------
@@ -197,12 +195,14 @@ $(function() {
 
 							},
 							{
-								data : 'active',
+								data : 'id',
 								bSortable : false,
 								mRender : function(data, type, row) {
 
 									var str = '';
-									str += '<a href="${contextRoot}/manage/'
+									str += '<a href="'
+											+ window.contextRoot
+											+ '/manage/'
 											+ data
 											+ '/product" class="btn btn-warning">';
 									str += '<span class="glyphicon glyphicon-pencil"></span></a>';
@@ -212,53 +212,107 @@ $(function() {
 							}
 
 					],
-					initComplete: function() {
+					initComplete : function() {
 						var api = this.api();
-						api.$('.switch input[type="checkbox"]')
-						.on(
-								'change',
-								function() {
+						api
+								.$('.switch input[type="checkbox"]')
+								.on(
+										'change',
+										function() {
 
-									var checkbox = $(this);
-									var checked = checkbox.prop('checked');
-									var dMsg = (checked) ? 'You want to activate the product?'
-											: 'You want to deactivate the product?';
-									var value = checkbox.prop('value');
-									bootbox
-											.confirm({
-												size : 'medium',
-												title : 'Product activation and deactivation',
-												message : dMsg,
-												callback : function(confirmed) {
+											var checkbox = $(this);
+											var checked = checkbox
+													.prop('checked');
+											var dMsg = (checked) ? 'You want to activate the product?'
+													: 'You want to deactivate the product?';
+											var value = checkbox.prop('value');
+											bootbox
+													.confirm({
+														size : 'medium',
+														title : 'Product activation and deactivation',
+														message : dMsg,
+														callback : function(
+																confirmed) {
 
-													if (confirmed) {
-														console.log(value);
-														
-														var activationUrl = window.contextRoot + '/manage/product/' + value + '/activation';
-														
-														$.post(activationUrl, function(data){
-															
-															bootbox
-															.alert({
-																size : 'medium',
-																title : 'Information',
-																message :data
-															});
-															
-														});
-														
-														
-													} else {
-														checkbox.prop('checked', !checked);
-													}
-												}
+															if (confirmed) {
+																console
+																		.log(value);
 
-											});
+																var activationUrl = window.contextRoot
+																		+ '/manage/product/'
+																		+ value
+																		+ '/activation';
 
-								});
+																$
+																		.post(
+																				activationUrl,
+																				function(
+																						data) {
+
+																					bootbox
+																							.alert({
+																								size : 'medium',
+																								title : 'Information',
+																								message : data
+																							});
+
+																				});
+
+															} else {
+																checkbox
+																		.prop(
+																				'checked',
+																				!checked);
+															}
+														}
+
+													});
+
+										});
 					}
 				});
 	}
 
 	// -------------------end of table-----------
+	// -------------------validation code for
+	// category----------------------------------------------------
+
+	var $categoryForm = $('#categoryForm')
+	if ($categoryForm.length) {
+		$categoryForm
+				.validate({
+
+					rules : {
+						name : {
+							required : true,
+							minlength : 2
+						},
+						description : {
+							required : true
+						}
+					},
+					messages : {
+						name : {
+							required : 'Please add the category name!',
+							minlenght : 'The category name should not be less than 2 characters'
+						},
+						description : {
+							required : 'Please add a description for this category'
+						}
+
+					},
+					errorElement : 'em',
+					errorPlacement : function(error, element) {
+						// add the class of help block
+						error.addClass('help-block');
+						// add the error element after the input element
+						error.insertAfter(element);
+					}
+
+				});
+	}
+
+	// --------------------------end of validation
+	// code----------------------------------
+
 });
