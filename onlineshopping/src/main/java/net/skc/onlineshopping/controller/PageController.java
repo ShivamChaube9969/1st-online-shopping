@@ -96,13 +96,13 @@ public class PageController {
 	 */
 
 	@RequestMapping(value = "/show/{id}/product")
-	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException{
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException {
 		ModelAndView mv = new ModelAndView("page");
 		Product product = productDAO.get(id);
 
-		if(product == null) throw new ProductNotFoundException();
-		
-		
+		if (product == null)
+			throw new ProductNotFoundException();
+
 		// update the view count
 		product.setViews(product.getViews() + 1);
 		productDAO.update(product);
@@ -112,6 +112,15 @@ public class PageController {
 		mv.addObject("product", product);
 		mv.addObject("userClickShowProduct", true);
 
+		return mv;
+	}
+
+	/*having similar mapping to our flow id*/
+	
+	@RequestMapping(value = "/register")
+	public ModelAndView register() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About Us");
 		return mv;
 	}
 
