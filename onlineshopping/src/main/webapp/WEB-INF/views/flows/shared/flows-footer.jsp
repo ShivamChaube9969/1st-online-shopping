@@ -1,4 +1,4 @@
-
+</div>
 <!-- Footer comes here -->
 <%@include file="../../shared/footer.jsp"%>
 

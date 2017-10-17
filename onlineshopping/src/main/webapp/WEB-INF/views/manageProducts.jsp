@@ -73,10 +73,9 @@
 
 							<label class="control-label col-md-4" for="unitPrice">Enter
 								Unit Price: </label>
-
 							<div class="col-md-8">
-								<sf:input type="number" path="unitPrice" id="unitPrice"
-									placeholder="Unit Price In &#8377" class="form-control" />
+								<sf:input type="number" path="unitPrice" id="unitPrice" 
+									placeholder="Unit Price In Rupees" class="form-control" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em" />
 							</div>
 
@@ -245,7 +244,8 @@
 						<div class="form-group">
 
 							<div class="col-md-offset-4 col-md-8">
-								<input type="submit" value="Add Category" class="btn btn-primary" />
+								<input type="submit" value="Add Category"
+									class="btn btn-primary" />
 							</div>
 						</div>
 
