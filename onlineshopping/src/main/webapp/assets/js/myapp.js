@@ -47,6 +47,7 @@ $(function() {
 					columns : [
 							{
 								data : 'code',
+								bSortable : false,
 								mRender : function(data, type, row) {
 									return '<img src="' + window.contextRoot
 											+ '/resources/images/' + data
@@ -54,10 +55,12 @@ $(function() {
 								}
 							},
 							{
-								data : 'name'
+								data : 'name',
+								bSortable : false
 							},
 							{
-								data : 'brand'
+								data : 'brand',
+								bSortable : false
 							},
 							{
 								data : 'unitPrice',
