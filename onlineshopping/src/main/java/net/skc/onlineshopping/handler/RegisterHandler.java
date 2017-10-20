@@ -3,6 +3,7 @@ package net.skc.onlineshopping.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.skc.onlineshopping.model.RegisterModel;
@@ -16,6 +17,9 @@ public class RegisterHandler {
 
 	@Autowired
 	private UserDAO userDAO;
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	public RegisterModel init() {
 
@@ -37,10 +41,8 @@ public class RegisterHandler {
 
 		if (!(user.getPassword().equals(user.getConfirmPassword()))) {
 
-			error.addMessage(new MessageBuilder()
-					.error().source("confirmPassword")
-					.defaultText("Password does not match the confirm password")
-					.build());
+			error.addMessage(new MessageBuilder().error().source("confirmPassword")
+					.defaultText("Password does not match the confirm password").build());
 
 			transitionValue = "failure";
 		}
@@ -49,12 +51,8 @@ public class RegisterHandler {
 
 		if (userDAO.getByEmail(user.getEmail()) != null) {
 
-			error.addMessage(new MessageBuilder()
-					.error()
-					.source("email")
-					.defaultText("Email Address is already used")
-					.build()
-					);
+			error.addMessage(
+					new MessageBuilder().error().source("email").defaultText("Email Address is already used").build());
 
 			transitionValue = "failure";
 		}
@@ -73,6 +71,9 @@ public class RegisterHandler {
 			cart.setUser(user);
 			user.setCart(cart);
 		}
+
+		// encode the password
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 		// save the user
 		userDAO.addUser(user);

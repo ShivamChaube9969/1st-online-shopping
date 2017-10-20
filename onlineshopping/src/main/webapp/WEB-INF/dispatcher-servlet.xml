@@ -13,7 +13,7 @@
    http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
    ">
 	<context:component-scan base-package="net.skc.onlineshopping"></context:component-scan>
-	<context:component-scan base-package="net.skc.shoppingbackend"></context:component-scan>
+	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
@@ -53,8 +53,9 @@
 	</bean>
 
 	<!-- validator bean -->
-	
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
 
 </beans>

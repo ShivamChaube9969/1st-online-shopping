@@ -51,9 +51,8 @@
 						<div class="jumbotron">
 							<h1>${errorTitle}</h1>
 							<hr>
-							<blockquote style="word-wrap:break-word">
-							${errorDescription}
-							</blockquote>
+							<blockquote style="word-wrap: break-word">
+								${errorDescription}</blockquote>
 						</div>
 					</div>
 				</div>
