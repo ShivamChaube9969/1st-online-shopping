@@ -74,7 +74,7 @@
 							<label class="control-label col-md-4" for="unitPrice">Enter
 								Unit Price: </label>
 							<div class="col-md-8">
-								<sf:input type="number" path="unitPrice" id="unitPrice" 
+								<sf:input type="number" path="unitPrice" id="unitPrice"
 									placeholder="Unit Price In Rupees" class="form-control" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em" />
 							</div>
@@ -160,38 +160,42 @@
 			<hr />
 		</div>
 		<div class="col-xs-12">
-			<div style="overflow: auto">
 
-				<!-- Product Table for Admin -->
+			<div class="container-fluid">
 
-				<table id="adminProductsTable"
-					class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>&#160;</th>
-							<th>Name</th>
-							<th>Brand</th>
-							<th>Quantity</th>
-							<th>Unit Price</th>
-							<th>Active</th>
-							<th>Edit</th>
-						</tr>
-					</thead>
+				<div class="table-responsive">
 
-					<tfoot>
-						<tr>
-							<th>Id</th>
-							<th>&#160;</th>
-							<th>Name</th>
-							<th>Brand</th>
-							<th>Quantity</th>
-							<th>Unit Price</th>
-							<th>Active</th>
-							<th>Edit</th>
-						</tr>
-					</tfoot>
-				</table>
+					<!-- Product Table for Admin -->
+
+					<table id="adminProductsTable"
+						class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>&#160;</th>
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
+								<th>Active</th>
+								<th>Edit</th>
+							</tr>
+						</thead>
+
+						<tfoot>
+							<tr>
+								<th>Id</th>
+								<th>&#160;</th>
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
+								<th>Active</th>
+								<th>Edit</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
