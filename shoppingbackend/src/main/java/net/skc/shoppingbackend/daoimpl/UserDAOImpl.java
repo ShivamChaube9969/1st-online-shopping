@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.skc.shoppingbackend.dao.UserDAO;
 import net.skc.shoppingbackend.dto.Address;
-import net.skc.shoppingbackend.dto.Cart;
 import net.skc.shoppingbackend.dto.User;
 
 @Repository("userDAO")
@@ -42,17 +41,7 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
-	@Override
-	public boolean updateCart(Cart cart) {
-		try {
-			sessionFactory.getCurrentSession().update(cart);
-			return true;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return false;
-		}
-
-	}
+	
 
 	@Override
 	public User getByEmail(String email) {

@@ -3,7 +3,6 @@ package net.skc.shoppingbackend.dao;
 import java.util.List;
 
 import net.skc.shoppingbackend.dto.Address;
-import net.skc.shoppingbackend.dto.Cart;
 import net.skc.shoppingbackend.dto.User;
 
 public interface UserDAO {
@@ -19,7 +18,6 @@ public interface UserDAO {
 	Address getBillingAddress(User user);
 	List<Address> listShippingAddresses(User user);
 
-	// update a cart
-	boolean updateCart(Cart cart);
+
 
 }

@@ -38,7 +38,7 @@ public class Cart implements Serializable{
 
 	/*======================*/
 	@Column(name = "grand_total")
-	private int grandTotal;
+	private double grandTotal;
 	@Column(name = "cart_lines")
 	private int cartLines;
 
@@ -54,11 +54,11 @@ public class Cart implements Serializable{
 		this.id = id;
 	}
 
-	public int getGrandTotal() {
+	public double getGrandTotal() {
 		return grandTotal;
 	}
 
-	public void setGrandTotal(int grandTotal) {
+	public void setGrandTotal(double grandTotal) {
 		this.grandTotal = grandTotal;
 	}
 
